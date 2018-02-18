@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <UserSecretsId>aspnet-Vaistine-73C1C029-ADBC-41FF-8FD1-F0B42CA6841E</UserSecretsId>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Antiforgery" Version="2.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.ResponseCaching" Version="2.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.2" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.1" />
+    <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Cags\Controllers\" />
+    <Folder Include="Areas\Cags\Data\" />
+    <Folder Include="Areas\Cags\ViewComponents\" />
+    <Folder Include="Areas\Cags\Views\Shared\" />
+    <Folder Include="Areas\Docs\Controllers\" />
+    <Folder Include="Areas\Docs\Data\" />
+    <Folder Include="Areas\Docs\ViewComponents\" />
+    <Folder Include="Areas\Docs\Views\Shared\" />
+    <Folder Include="Areas\Goods\Controllers\" />
+    <Folder Include="Areas\Goods\Data\" />
+    <Folder Include="Areas\Goods\Models\" />
+    <Folder Include="Areas\Goods\ViewComponents\" />
+    <Folder Include="Areas\Goods\Views\Shared\" />
+    <Folder Include="Areas\Money\Controllers\" />
+    <Folder Include="Areas\Money\Data\" />
+    <Folder Include="Areas\Money\Models\" />
+    <Folder Include="Areas\Money\ViewComponents\" />
+    <Folder Include="Areas\Money\Views\Shared\" />
+    <Folder Include="Areas\Stores\Data\" />
+    <Folder Include="Areas\Stores\ViewComponents\" />
+    <Folder Include="Areas\Stores\Views\Shared\" />
+  </ItemGroup>
+
+</Project>
