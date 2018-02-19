@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Vaistine.Areas.Cags.Models;
+using Vaistine.Areas.Docs.Models;
 using Vaistine.Models;
 
 namespace Vaistine.Areas.Stores.Models
@@ -12,5 +13,8 @@ namespace Vaistine.Areas.Stores.Models
         public bool IsAccount { get; set; }
         public Guid OwnerId { get; set; }
         public virtual Cag Owner { get; set; }
+
+        public virtual ICollection<DocHead> InDocs { get; set; }
+        public virtual ICollection<DocHead> OutDocs { get; set; }
     }
 }

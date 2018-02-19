@@ -11,9 +11,10 @@ using Vaistine.Data;
 namespace Vaistine.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180219164340_m000")]
+    partial class m000
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -142,60 +143,6 @@ namespace Vaistine.Data.Migrations
                     b.HasIndex("ParentId");
 
                     b.ToTable("Cags");
-                });
-
-            modelBuilder.Entity("Vaistine.Areas.Docs.Models.DocHead", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Descr");
-
-                    b.Property<Guid>("FromCagId");
-
-                    b.Property<DateTime>("FromDate");
-
-                    b.Property<Guid>("FromStoreId");
-
-                    b.Property<Guid>("ToCagId");
-
-                    b.Property<DateTime>("ToDate");
-
-                    b.Property<Guid>("ToStoreId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FromCagId");
-
-                    b.HasIndex("FromStoreId");
-
-                    b.HasIndex("ToCagId");
-
-                    b.HasIndex("ToStoreId");
-
-                    b.ToTable("Docs");
-                });
-
-            modelBuilder.Entity("Vaistine.Areas.Docs.Models.DocLine", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<Guid>("DocHeadId");
-
-                    b.Property<Guid>("GoodId");
-
-                    b.Property<double>("Price");
-
-                    b.Property<double>("Quantity");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DocHeadId");
-
-                    b.HasIndex("GoodId");
-
-                    b.ToTable("DocLines");
                 });
 
             modelBuilder.Entity("Vaistine.Areas.Goods.Models.Component", b =>
@@ -388,42 +335,6 @@ namespace Vaistine.Data.Migrations
                         .WithMany("Children")
                         .HasForeignKey("ParentId")
                         .OnDelete(DeleteBehavior.Restrict);
-                });
-
-            modelBuilder.Entity("Vaistine.Areas.Docs.Models.DocHead", b =>
-                {
-                    b.HasOne("Vaistine.Areas.Cags.Models.Cag", "FromCag")
-                        .WithMany("OutDocs")
-                        .HasForeignKey("FromCagId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("Vaistine.Areas.Stores.Models.Store", "FromStore")
-                        .WithMany("OutDocs")
-                        .HasForeignKey("FromStoreId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("Vaistine.Areas.Cags.Models.Cag", "ToCag")
-                        .WithMany("InDocs")
-                        .HasForeignKey("ToCagId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("Vaistine.Areas.Stores.Models.Store", "ToStore")
-                        .WithMany("InDocs")
-                        .HasForeignKey("ToStoreId")
-                        .OnDelete(DeleteBehavior.Restrict);
-                });
-
-            modelBuilder.Entity("Vaistine.Areas.Docs.Models.DocLine", b =>
-                {
-                    b.HasOne("Vaistine.Areas.Docs.Models.DocHead", "DocHead")
-                        .WithMany("DocLines")
-                        .HasForeignKey("DocHeadId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("Vaistine.Areas.Goods.Models.Good", "Good")
-                        .WithMany()
-                        .HasForeignKey("GoodId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Vaistine.Areas.Goods.Models.Good", b =>
