@@ -25,11 +25,9 @@
     <Folder Include="Areas\Cags\Data\" />
     <Folder Include="Areas\Cags\ViewComponents\" />
     <Folder Include="Areas\Cags\Views\Shared\" />
-    <Folder Include="Areas\Docs\Controllers\" />
     <Folder Include="Areas\Docs\Data\" />
     <Folder Include="Areas\Docs\ViewComponents\" />
     <Folder Include="Areas\Docs\Views\Shared\" />
-    <Folder Include="Areas\Goods\Controllers\" />
     <Folder Include="Areas\Goods\Data\" />
     <Folder Include="Areas\Goods\ViewComponents\" />
     <Folder Include="Areas\Goods\Views\Shared\" />
