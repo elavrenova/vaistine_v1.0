@@ -40,7 +40,10 @@ namespace Vaistine.Areas.Docs.Controllers
                 .Include(d => d.FromStore)
                 .Include(d => d.ToCag)
                 .Include(d => d.ToStore)
+                .Include(d => d.DocLines)
+                .ThenInclude(l=>l.Good)
                 .SingleOrDefaultAsync(m => m.Id == id);
+
             if (docHead == null)
             {
                 return NotFound();

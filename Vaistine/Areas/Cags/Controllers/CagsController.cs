@@ -14,10 +14,11 @@ namespace Vaistine.Areas.Cags
     public class CagsController : Controller
     {
         private readonly ApplicationDbContext _context;
-
+        List<Cag> cagChildren;
         public CagsController(ApplicationDbContext context)
         {
             _context = context;
+
         }
 
         // GET: Cags/Cags
@@ -49,7 +50,8 @@ namespace Vaistine.Areas.Cags
         // GET: Cags/Cags/Create
         public IActionResult Create()
         {
-            ViewData["ParentId"] = new SelectList(_context.Cags, "Id", "Id");
+            //cagChildren = new List<Cag>();
+            ViewData["ParentId"] = new SelectList(_context.Cags, "Id", "Descr");
             return View();
         }
 
@@ -72,19 +74,19 @@ namespace Vaistine.Areas.Cags
         }
 
         // GET: Cags/Cags/Edit/5
-        public async Task<IActionResult> Edit(Guid? id)
+        public async Task<IActionResult> Edit(Guid id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            cagChildren = new List<Cag>();
+            cagChildren = GetCagChildren(id);
+            cagChildren.Add(_context.Cags.SingleOrDefault(x => x.Id == id));
+            var possibleParents = _context.Cags.Except(cagChildren);
 
             var cag = await _context.Cags.SingleOrDefaultAsync(m => m.Id == id);
             if (cag == null)
             {
                 return NotFound();
             }
-            ViewData["ParentId"] = new SelectList(_context.Cags, "Id", "Id", cag.ParentId);
+            ViewData["ParentId"] = new SelectList(possibleParents, "Id", "Descr", cag.ParentId);
             return View(cag);
         }
 
@@ -157,6 +159,21 @@ namespace Vaistine.Areas.Cags
         private bool CagExists(Guid id)
         {
             return _context.Cags.Any(e => e.Id == id);
+        }
+
+        private List<Cag> GetCagChildren(Guid id)
+        {
+            var cag = _context.Cags
+                .Include(x=>x.Children)
+                .SingleOrDefault(x => x.Id == id);
+            cagChildren.AddRange(cag.Children);
+            if (cag == null)
+                return null;
+            foreach(var c in cag.Children)
+            {
+                cagChildren.AddRange(GetCagChildren(c.Id));
+            }
+            return cagChildren;
         }
     }
 }

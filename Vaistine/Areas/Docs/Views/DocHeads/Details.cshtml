@@ -2,12 +2,34 @@
 
 @{
     ViewData["Title"] = "Details";
-}
+    string DocHeader;
+    if (Model.FromStore.IsAccount)
+    {
+        if (Model.ToStore.IsAccount)
+        {
+            DocHeader = "Накладная на перемещение";
+        }
+        else
+        {
+            DocHeader = "Расходная накладная";
+        }
+    }
+    else
+    {
+        if (Model.ToStore.IsAccount)
+        {
+            DocHeader = "Приходная накладная";
+        }
+        else
+        {
+            DocHeader = "Ошибочный документ!!!";
+        }
+    }
+ }
 
-<h2>Details</h2>
+<h2>@DocHeader @Model.Descr</h2>
 
 <div>
-    <h4>DocHead</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -23,37 +45,52 @@
             @Html.DisplayFor(model => model.ToDate)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Descr)
+            @Html.DisplayNameFor(model => model.FromCagId)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Descr)
+            @Html.DisplayFor(model => model.FromCag.Descr)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.FromCag)
+            @Html.DisplayNameFor(model => model.FromStoreId)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.FromCag.Id)
+            @Html.DisplayFor(model => model.FromStore.Descr)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.FromStore)
+            @Html.DisplayNameFor(model => model.ToCagId)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.FromStore.Id)
+            @Html.DisplayFor(model => model.ToCag.Descr)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.ToCag)
+            @Html.DisplayNameFor(model => model.ToStoreId)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.ToCag.Id)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ToStore)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ToStore.Id)
+            @Html.DisplayFor(model => model.ToStore.Descr)
         </dd>
     </dl>
 </div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Товар</th>
+            <th>Количество</th>
+            <th>Цена</th>
+            <th>Сумма</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.DocLines)
+        {
+            <tr>
+                <td>@item.Good.Descr</td>
+                <td>@item.Quantity</td>
+                <td>@item.Price.ToString("C")</td>
+                <td>@((item.Price * item.Quantity).ToString("C"))</td>
+            </tr>
+        }
+    </tbody>
+</table>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>

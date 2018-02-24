@@ -111,6 +111,11 @@ namespace Vaistine.Data
                 .WithMany(x => x.DocLines)
                 .HasForeignKey(x => x.DocHeadId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+                l.HasOne(x => x.Good)
+                .WithMany(x => x.DocLines)
+                .HasForeignKey(x => x.GoodId)
+                .OnDelete(DeleteBehavior.Restrict);
             });
 
         }
