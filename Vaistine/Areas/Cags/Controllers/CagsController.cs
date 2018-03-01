@@ -29,13 +29,8 @@ namespace Vaistine.Areas.Cags
         }
 
         // GET: Cags/Cags/Details/5
-        public async Task<IActionResult> Details(Guid? id)
+        public async Task<IActionResult> Details(Guid id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             var cag = await _context.Cags
                 .Include(c => c.Parent)
                 .SingleOrDefaultAsync(m => m.Id == id);
@@ -43,7 +38,11 @@ namespace Vaistine.Areas.Cags
             {
                 return NotFound();
             }
-
+            cagChildren = new List<Cag>();
+            cagChildren = GetCagChildren(id);
+            cagChildren.Add(_context.Cags.SingleOrDefault(x => x.Id == id));
+            var possibleParents = _context.Cags.Except(cagChildren);
+            ViewData["ParentId"] = new SelectList(_context.Cags, "Id", "Id", cag.ParentId);
             return View(cag);
         }
 

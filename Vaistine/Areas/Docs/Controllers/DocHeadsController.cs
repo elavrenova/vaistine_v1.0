@@ -55,10 +55,10 @@ namespace Vaistine.Areas.Docs.Controllers
         // GET: Docs/DocHeads/Create
         public IActionResult Create()
         {
-            ViewData["FromCagId"] = new SelectList(_context.Cags, "Id", "Id");
-            ViewData["FromStoreId"] = new SelectList(_context.Stores, "Id", "Id");
-            ViewData["ToCagId"] = new SelectList(_context.Cags, "Id", "Id");
-            ViewData["ToStoreId"] = new SelectList(_context.Stores, "Id", "Id");
+            ViewData["FromCagId"] = new SelectList(_context.Cags, "Id", "Descr");
+            ViewData["FromStoreId"] = new SelectList(_context.Stores, "Id", "Descr");
+            ViewData["ToCagId"] = new SelectList(_context.Cags, "Id", "Descr");
+            ViewData["ToStoreId"] = new SelectList(_context.Stores, "Id", "Descr");
             return View();
         }
 
@@ -76,10 +76,10 @@ namespace Vaistine.Areas.Docs.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FromCagId"] = new SelectList(_context.Cags, "Id", "Id", docHead.FromCagId);
-            ViewData["FromStoreId"] = new SelectList(_context.Stores, "Id", "Id", docHead.FromStoreId);
-            ViewData["ToCagId"] = new SelectList(_context.Cags, "Id", "Id", docHead.ToCagId);
-            ViewData["ToStoreId"] = new SelectList(_context.Stores, "Id", "Id", docHead.ToStoreId);
+            ViewData["FromCagId"] = new SelectList(_context.Cags, "Id", "Descr", docHead.FromCagId);
+            ViewData["FromStoreId"] = new SelectList(_context.Stores, "Id", "Descr", docHead.FromStoreId);
+            ViewData["ToCagId"] = new SelectList(_context.Cags, "Id", "Descr", docHead.ToCagId);
+            ViewData["ToStoreId"] = new SelectList(_context.Stores, "Id", "Descr", docHead.ToStoreId);
             return View(docHead);
         }
 
@@ -96,10 +96,10 @@ namespace Vaistine.Areas.Docs.Controllers
             {
                 return NotFound();
             }
-            ViewData["FromCagId"] = new SelectList(_context.Cags, "Id", "Id", docHead.FromCagId);
-            ViewData["FromStoreId"] = new SelectList(_context.Stores, "Id", "Id", docHead.FromStoreId);
-            ViewData["ToCagId"] = new SelectList(_context.Cags, "Id", "Id", docHead.ToCagId);
-            ViewData["ToStoreId"] = new SelectList(_context.Stores, "Id", "Id", docHead.ToStoreId);
+            ViewData["FromCagId"] = new SelectList(_context.Cags, "Id", "Descr", docHead.FromCagId);
+            ViewData["FromStoreId"] = new SelectList(_context.Stores, "Id", "Descr", docHead.FromStoreId);
+            ViewData["ToCagId"] = new SelectList(_context.Cags, "Id", "Descr", docHead.ToCagId);
+            ViewData["ToStoreId"] = new SelectList(_context.Stores, "Id", "Descr", docHead.ToStoreId);
             return View(docHead);
         }
 
@@ -135,10 +135,10 @@ namespace Vaistine.Areas.Docs.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FromCagId"] = new SelectList(_context.Cags, "Id", "Id", docHead.FromCagId);
-            ViewData["FromStoreId"] = new SelectList(_context.Stores, "Id", "Id", docHead.FromStoreId);
-            ViewData["ToCagId"] = new SelectList(_context.Cags, "Id", "Id", docHead.ToCagId);
-            ViewData["ToStoreId"] = new SelectList(_context.Stores, "Id", "Id", docHead.ToStoreId);
+            ViewData["FromCagId"] = new SelectList(_context.Cags, "Id", "Descr", docHead.FromCagId);
+            ViewData["FromStoreId"] = new SelectList(_context.Stores, "Id", "Descr", docHead.FromStoreId);
+            ViewData["ToCagId"] = new SelectList(_context.Cags, "Id", "Descr", docHead.ToCagId);
+            ViewData["ToStoreId"] = new SelectList(_context.Stores, "Id", "Descr", docHead.ToStoreId);
             return View(docHead);
         }
 

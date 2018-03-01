@@ -51,9 +51,9 @@ namespace Vaistine.Areas.Goods.Controllers
         // GET: Goods/Goods/Create
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id");
-            ViewData["MainComponentId"] = new SelectList(_context.Components, "Id", "Id");
-            ViewData["UnitId"] = new SelectList(_context.Units, "Id", "Id");
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Descr");
+            ViewData["MainComponentId"] = new SelectList(_context.Components, "Id", "Descr");
+            ViewData["UnitId"] = new SelectList(_context.Units, "Id", "Descr");
             return View();
         }
 
@@ -71,9 +71,9 @@ namespace Vaistine.Areas.Goods.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", good.CategoryId);
-            ViewData["MainComponentId"] = new SelectList(_context.Components, "Id", "Id", good.MainComponentId);
-            ViewData["UnitId"] = new SelectList(_context.Units, "Id", "Id", good.UnitId);
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Descr", good.CategoryId);
+            ViewData["MainComponentId"] = new SelectList(_context.Components, "Id", "Descr", good.MainComponentId);
+            ViewData["UnitId"] = new SelectList(_context.Units, "Id", "Descr", good.UnitId);
             return View(good);
         }
 
@@ -90,9 +90,9 @@ namespace Vaistine.Areas.Goods.Controllers
             {
                 return NotFound();
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", good.CategoryId);
-            ViewData["MainComponentId"] = new SelectList(_context.Components, "Id", "Id", good.MainComponentId);
-            ViewData["UnitId"] = new SelectList(_context.Units, "Id", "Id", good.UnitId);
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Descr", good.CategoryId);
+            ViewData["MainComponentId"] = new SelectList(_context.Components, "Id", "Descr", good.MainComponentId);
+            ViewData["UnitId"] = new SelectList(_context.Units, "Id", "Descr", good.UnitId);
             return View(good);
         }
 
@@ -128,9 +128,9 @@ namespace Vaistine.Areas.Goods.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", good.CategoryId);
-            ViewData["MainComponentId"] = new SelectList(_context.Components, "Id", "Id", good.MainComponentId);
-            ViewData["UnitId"] = new SelectList(_context.Units, "Id", "Id", good.UnitId);
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Descr", good.CategoryId);
+            ViewData["MainComponentId"] = new SelectList(_context.Components, "Id", "Descr", good.MainComponentId);
+            ViewData["UnitId"] = new SelectList(_context.Units, "Id", "Descr", good.UnitId);
             return View(good);
         }
 

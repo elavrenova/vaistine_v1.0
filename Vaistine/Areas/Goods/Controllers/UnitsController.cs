@@ -49,7 +49,7 @@ namespace Vaistine.Areas.Goods.Controllers
         // GET: Goods/Units/Create
         public IActionResult Create()
         {
-            ViewData["BaseUnitId"] = new SelectList(_context.Units, "Id", "Id");
+            ViewData["BaseUnitId"] = new SelectList(_context.Units, "Id", "Descr");
             return View();
         }
 
@@ -67,7 +67,7 @@ namespace Vaistine.Areas.Goods.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BaseUnitId"] = new SelectList(_context.Units, "Id", "Id", unit.BaseUnitId);
+            ViewData["BaseUnitId"] = new SelectList(_context.Units, "Id", "Descr", unit.BaseUnitId);
             return View(unit);
         }
 
@@ -84,7 +84,7 @@ namespace Vaistine.Areas.Goods.Controllers
             {
                 return NotFound();
             }
-            ViewData["BaseUnitId"] = new SelectList(_context.Units, "Id", "Id", unit.BaseUnitId);
+            ViewData["BaseUnitId"] = new SelectList(_context.Units, "Id", "Descr", unit.BaseUnitId);
             return View(unit);
         }
 
@@ -120,7 +120,7 @@ namespace Vaistine.Areas.Goods.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BaseUnitId"] = new SelectList(_context.Units, "Id", "Id", unit.BaseUnitId);
+            ViewData["BaseUnitId"] = new SelectList(_context.Units, "Id", "Descr", unit.BaseUnitId);
             return View(unit);
         }
 

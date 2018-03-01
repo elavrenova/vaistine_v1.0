@@ -12,28 +12,34 @@
 <table class="table">
     <thead>
         <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Descr)
-                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descr)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Parent)
             </th>
-            <th></th>
+            <th style="width:5%">
+
+            </th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Descr)
+                <a asp-area="Cags" asp-controller="Cags" asp-action="Details" asp-route-id="@item.Id">
+                    @Html.DisplayFor(modelItem => item.Descr)
+                </a>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Parent.Descr)
+                <a asp-area="Cags" asp-controller="Cags" asp-action="Details" asp-route-id="@item.ParentId">
+                    @Html.DisplayFor(modelItem => item.Parent.Descr)
+                </a>
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-area="Cags" asp-controller="Cags" asp-action="Delete" asp-route-id="@item.Id">
+                    <i class="fas fa-trash-alt text-danger"></i>
+                </a>
             </td>
         </tr>
 }

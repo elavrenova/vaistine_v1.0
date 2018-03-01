@@ -14,7 +14,9 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="BaseUnitId" class="control-label"></label>
-                <select asp-for="BaseUnitId" class="form-control" asp-items="ViewBag.BaseUnitId"></select>
+                <select asp-for="BaseUnitId" class="form-control" asp-items="ViewBag.BaseUnitId">
+                    <option value="">Базовая единица</option>
+                </select>
                 <span asp-validation-for="BaseUnitId" class="text-danger"></span>
             </div>
             <div class="form-group">
