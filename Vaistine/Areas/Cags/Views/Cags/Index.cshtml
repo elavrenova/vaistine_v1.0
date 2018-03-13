@@ -5,17 +5,21 @@
 }
 
 <h3>
-    Контрагенты 
-    <a asp-area="Cags" asp-controller="Cags" asp-action="Create">
-        <i class="fas fa-plus"></i>
-    </a>
+    <div class="col-md-2">
+        Контрагенты
+    </div>
+    <div class="col-md-2">
+        <a asp-area="Cags" asp-controller="Cags" asp-action="Create">
+            <i class="fas fa-plus"></i>
+        </a>
+    </div>
 </h3>
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Descr)
+                Контрагент
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Parent)

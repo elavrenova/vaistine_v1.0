@@ -3,18 +3,17 @@
 @{
     ViewData["Title"] = "Details";
 }
-
-<h3 class="text-primary text-center">@Model.Descr</h3>
-
-<div >
-    <a href="" class="btn btn-info" data-toggle="modal" data-target="#editform"> Изменить </a>
+<div>
+    <h3 class="text-primary text-center">@Model.Descr</h3>
+    
 </div>
+
 
 <div>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Descr)
+            Контрагент
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Descr)
@@ -29,7 +28,8 @@
 </div>
 <div>
     <a asp-area="Cags" asp-controller="Cags" asp-action="Index">
-        <i class="fas fa-arrow-left"></i>
+        <a asp-action="Index" class="btn btn-default alert-info" style="margin:5px">Назад</a>
+        <a href="" class="btn btn-default alert-success" data-toggle="modal" data-target="#editform"> Изменить </a>
     </a>
 </div>
 
