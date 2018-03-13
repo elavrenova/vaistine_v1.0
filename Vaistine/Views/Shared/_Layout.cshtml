@@ -31,18 +31,18 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="Stores" asp-controller="Stores" asp-action="Index">Stores</a></li>
-                    <li><a asp-area="Cags" asp-controller="Cags" asp-action="Index">Cags</a></li>
+                    <li><a asp-area="Stores" asp-controller="Stores" asp-action="Index">Склады</a></li>
+                    <li><a asp-area="Cags" asp-controller="Cags" asp-action="Index">Контрагенты</a></li>
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Goods<span class="caret"></span></a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Товары<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a asp-area="Goods" asp-controller="Goods" asp-action="Index">Goods</a></li>
-                            <li><a asp-area="Goods" asp-controller="GoodCategories" asp-action="Index">Good Categories</a></li>
-                            <li><a asp-area="Goods" asp-controller="Units" asp-action="Index">Units</a></li>
-                            <li><a asp-area="Goods" asp-controller="Components" asp-action="Index">Components</a></li>
+                            <li><a asp-area="Goods" asp-controller="Goods" asp-action="Index">Товары</a></li>
+                            <li><a asp-area="Goods" asp-controller="GoodCategories" asp-action="Index">Категории</a></li>
+                            <li><a asp-area="Goods" asp-controller="Units" asp-action="Index">Единицы измерения</a></li>
+                            <li><a asp-area="Goods" asp-controller="Components" asp-action="Index">Компоненты</a></li>
                         </ul>
                     </li>
-                    <li><a asp-area="Docs" asp-controller="DocHeads" asp-action="Index">Documents</a></li>
+                    <li><a asp-area="Docs" asp-controller="DocHeads" asp-action="Index">Документы</a></li>
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>

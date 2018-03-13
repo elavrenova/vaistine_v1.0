@@ -42,7 +42,7 @@ namespace Vaistine.Areas.Cags
             cagChildren = GetCagChildren(id);
             cagChildren.Add(_context.Cags.SingleOrDefault(x => x.Id == id));
             var possibleParents = _context.Cags.Except(cagChildren);
-            ViewData["ParentId"] = new SelectList(_context.Cags, "Id", "Id", cag.ParentId);
+            ViewData["ParentId"] = new SelectList(_context.Cags, "Id", "Descr");
             return View(cag);
         }
 
@@ -75,16 +75,18 @@ namespace Vaistine.Areas.Cags
         // GET: Cags/Cags/Edit/5
         public async Task<IActionResult> Edit(Guid id)
         {
-            cagChildren = new List<Cag>();
-            cagChildren = GetCagChildren(id);
-            cagChildren.Add(_context.Cags.SingleOrDefault(x => x.Id == id));
-            var possibleParents = _context.Cags.Except(cagChildren);
+            var cag = await _context.Cags
+                .Include(c => c.Parent)
+                .SingleOrDefaultAsync(m => m.Id == id);
 
-            var cag = await _context.Cags.SingleOrDefaultAsync(m => m.Id == id);
             if (cag == null)
             {
                 return NotFound();
             }
+            cagChildren = new List<Cag>();
+            cagChildren = GetCagChildren(id);
+            cagChildren.Add(_context.Cags.SingleOrDefault(x => x.Id == id));
+            var possibleParents = _context.Cags.Except(cagChildren);
             ViewData["ParentId"] = new SelectList(possibleParents, "Id", "Descr", cag.ParentId);
             return View(cag);
         }

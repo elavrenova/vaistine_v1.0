@@ -1,14 +1,16 @@
 ﻿@model IEnumerable<Vaistine.Areas.Cags.Models.Cag>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Контрагенты";
 }
 
-<h2>Index</h2>
+<h3>
+    Контрагенты 
+    <a asp-area="Cags" asp-controller="Cags" asp-action="Create">
+        <i class="fas fa-plus"></i>
+    </a>
+</h3>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>

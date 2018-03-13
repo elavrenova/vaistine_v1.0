@@ -25,6 +25,50 @@ namespace Vaistine.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+            Initialize();
+        }
+
+        public ApplicationDbContext()
+            : base()
+        {
+            Initialize();
+        }
+
+        private void Initialize()
+        {
+            if (!Stores.Any())
+            {
+                Stores.Add(new Store { Descr = "Главный склад", IsAccount=true });
+                Stores.Add(new Store { Descr = "Склад 1", IsAccount = true});
+                Stores.Add(new Store { Descr = "Склад 2", IsAccount=false });
+                SaveChanges();
+            }
+            if (!Cags.Any())
+            {
+                Cags.Add(new Cag { Descr="АктивМед" });
+                Cags.Add(new Cag { Descr = "Пакт-М" });
+            }
+            if (!Categories.Any())
+            {
+                Categories.Add(new GoodCategory { Descr = "Лекарства" });
+                Categories.Add(new GoodCategory { Descr = "БАДы" });
+            }
+            if (!Units.Any())
+            {
+                Units.Add(new Unit { Descr = "Штука", Scale = 1.0, ShortDescr = "шт"});
+                Units.Add(new Unit { Descr = "Упаковка", Scale = 1.0, ShortDescr = "уп" });
+            }
+            if (!Components.Any())
+            {
+                Components.Add(new Component { Descr = "Нафазолин"});
+                Components.Add(new Component { Descr = "Амбазон"});
+            }
+            if (!Goods.Any())
+            {
+                Goods.Add(new Good { Descr = "Нафтизин" });
+                Goods.Add(new Good { Descr = "Фарингосепт" });
+            }
+
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
