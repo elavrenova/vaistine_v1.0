@@ -42,7 +42,7 @@ namespace Vaistine.Areas.Stores.Controllers
             {
                 return NotFound();
             }
-
+            ViewData["OwnerId"] = new SelectList(_context.Cags, "Id", "Descr");
             return View(store);
         }
 
@@ -158,5 +158,6 @@ namespace Vaistine.Areas.Stores.Controllers
         {
             return _context.Stores.Any(e => e.Id == id);
         }
+
     }
 }

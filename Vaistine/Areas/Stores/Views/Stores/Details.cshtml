@@ -4,20 +4,15 @@
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
+<div>
+    <h3 class="text-primary text-center">@Model.Descr</h3>
+</div>
 
 <div>
-    <h4>Store</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.IsAccount)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.IsAccount)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Descr)
+            Название
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Descr)
@@ -26,11 +21,64 @@
             @Html.DisplayNameFor(model => model.Owner)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Owner.Id)
+            @Html.DisplayFor(model => model.Owner.Descr)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsAccount)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsAccount)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-area="Stores" asp-controller="Stores" asp-action="Index">
+        <a asp-action="Index" class="btn btn-default alert-info" style="margin:5px">Назад</a>
+        <a href="" class="btn btn-default alert-success" data-toggle="modal" data-target="#editform"> Изменить </a>
+    </a>
 </div>
+
+<div class="modal fade" id="editform" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-info text-center">
+                <h4 class="modal-title text-primary">Изменение</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="false">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="padding:20px">
+                <div class="form-horizontal">
+                    <form asp-action="Edit">
+                        <input type="hidden" asp-for="Id" />
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Descr" class="control-label col-md-2 text-left">Название</label>
+                            <input asp-for="Descr" class="form-control" />
+                            <span asp-validation-for="Descr" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="OwnerId" class="control-label col-md-2 text-left"></label>
+                            <select asp-for="OwnerId" class="form-control" asp-items="ViewBag.OwnerId">
+                                <option value="">Входит в состав</option>
+                            </select>
+                            <span asp-validation-for="OwnerId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                    @Html.DisplayNameFor(model => model.IsAccount) <input class="col-md-3" asp-for="IsAccount" />
+                                </label>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-default alert-success">Сохранить</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

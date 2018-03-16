@@ -4,41 +4,35 @@
     ViewData["Title"] = "Create";
 }
 
-<h2>Create</h2>
+<h2>Создание нового склада</h2>
 
-<h4>Store</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="IsAccount" /> @Html.DisplayNameFor(model => model.IsAccount)
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label asp-for="OwnerId" class="control-label"></label>
-                <select asp-for="OwnerId" class ="form-control" asp-items="ViewBag.OwnerId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="Descr" class="control-label"></label>
+                <label asp-for="Descr" class="control-label">Название</label>
                 <input asp-for="Descr" class="form-control" />
                 <span asp-validation-for="Descr" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-default" >
-                    Create
-                </button>
+                <label asp-for="OwnerId" class="control-label"></label>
+                <select asp-for="OwnerId" class="form-control" asp-items="ViewBag.OwnerId"></select>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                         @Html.DisplayNameFor(model => model.IsAccount) <input class="col-md-3" asp-for="IsAccount" />
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <a asp-action="Index" class="btn btn-default alert-info">Назад</a>
+                <input type="submit" value="Создать" class="btn btn-default alert-success" />
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

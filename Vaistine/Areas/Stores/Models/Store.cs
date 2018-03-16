@@ -15,6 +15,7 @@ namespace Vaistine.Areas.Stores.Models
         public bool IsAccount { get; set; }
         [Display(Name = "Владелец")]
         public Guid OwnerId { get; set; }
+        [Display(Name = "Владелец")]
         public virtual Cag Owner { get; set; }
         public virtual ICollection<DocHead> InDocs { get; set; }
         public virtual ICollection<DocHead> OutDocs { get; set; }

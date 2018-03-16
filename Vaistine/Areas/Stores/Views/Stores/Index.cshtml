@@ -4,22 +4,28 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h3>
+    <div class="col-md-2">
+        Склады
+    </div>
+    <div class="col-md-2">
+        <a asp-area="Stores" asp-controller="Stores" asp-action="Create">
+            <i class="fas fa-plus"></i>
+        </a>
+    </div>
+</h3>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.IsAccount)
-                </th>
-                <th>
-                    Склад
-                </th>
+            <th>
+                Склад
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.OwnerId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsAccount)
             </th>
             <th></th>
         </tr>
@@ -28,18 +34,22 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                <a asp-area="Stores" asp-controller="Stores" asp-action="Details" asp-route-id="@item.Id">
+                    @Html.DisplayFor(modelItem => item.Descr)
+                </a>
+            </td>
+            <td>
+                <a asp-area="Cags" asp-controller="Cags" asp-action="Details" asp-route-id="@item.OwnerId">
+                    @Html.DisplayFor(modelItem => item.Owner.Descr)
+                </a>
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.IsAccount)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Descr)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Owner.Descr)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-area="Stores" asp-controller="Stores" asp-action="Delete" asp-route-id="@item.Id">
+                    <i class="fas fa-trash-alt text-danger"></i>
+                </a>
             </td>
         </tr>
 }
